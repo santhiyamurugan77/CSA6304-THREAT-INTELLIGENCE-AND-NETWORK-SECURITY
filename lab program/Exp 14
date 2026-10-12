@@ -1,9 +1,20 @@
 
-context = input("Context available? (yes/no): ").lower()
-confidence = int(input("Confidence (1-5): "))
-action = input("Actionable? (yes/no): ").lower()
+events = [
+    {"source": "Firewall", "ip": "203.0.113.5"},
+    {"source": "VPN", "ip": "203.0.113.5"},
+    {"source": "Windows", "ip": "203.0.113.5"}
+]
 
-if context == "yes" and confidence >= 3 and action == "yes":
-    print("Valid Threat Intelligence")
-else:
-    print("Raw or Incomplete Data")
+counts = {}
+
+# Normalize and correlate
+for event in events:
+    event["source"] = event["source"].lower()
+    ip = event["ip"]
+    counts[ip] = counts.get(ip, 0) + 1
+
+print("Normalized events:", events)
+
+for ip, count in counts.items():
+    if count >= 3:
+        print("ALERT: Multiple events from", ip)
