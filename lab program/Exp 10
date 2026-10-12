@@ -1,0 +1,18 @@
+
+connections = set()
+
+action = input("Enter packet type (outbound/inbound): ").lower()
+connection_id = input("Enter connection ID: ")
+
+if action == "outbound":
+    connections.add(connection_id)
+    print("Outbound connection allowed")
+
+elif action == "inbound":
+    if connection_id in connections:
+        print("Return traffic allowed")
+    else:
+        print("Unsolicited inbound traffic blocked")
+
+else:
+    print("Invalid packet type")
