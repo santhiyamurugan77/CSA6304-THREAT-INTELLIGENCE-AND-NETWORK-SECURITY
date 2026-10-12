@@ -1,0 +1,13 @@
+
+from scapy.all import sniff
+
+count = int(input("Enter number of packets: "))
+
+def display_packet(packet):
+    print(packet.summary())
+
+sniff(
+    count=count,
+    prn=display_packet,
+    store=False
+)
