@@ -1,0 +1,11 @@
+
+alert = input("Enter SOC alert: ").lower()
+
+if "ransomware" in alert or "data exfiltration" in alert:
+    print("Priority: P1 - Critical")
+elif "malware" in alert or "privilege escalation" in alert:
+    print("Priority: P2 - High")
+elif "suspicious login" in alert or "phishing" in alert:
+    print("Priority: P3 - Medium")
+else:
+    print("Priority: P4 - Low")
