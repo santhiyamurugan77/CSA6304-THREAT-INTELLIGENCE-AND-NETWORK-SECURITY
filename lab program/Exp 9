@@ -1,0 +1,15 @@
+
+policy = {
+    "LOW": ["WEB"],
+    "WEB": ["APP"],
+    "APP": ["DATABASE"],
+    "ADMIN": ["APP", "DATABASE"]
+}
+
+source = input("Enter source segment: ").upper()
+destination = input("Enter destination segment: ").upper()
+
+if destination in policy.get(source, []):
+    print("Access Allowed")
+else:
+    print("Access Blocked")
