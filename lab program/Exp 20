@@ -1,25 +1,13 @@
 
-events = [
-    {"user": "Anu", "action": "login_failed"},
-    {"user": "Raj", "action": "login_success"},
-    {"user": "Anu", "action": "login_failed"}
-]
+description = input("Describe network threat: ").lower()
 
-search = input("Enter action to search: ").lower()
-
-matched = [
-    event for event in events
-    if search in event["action"].lower()
-]
-
-print("Search results:")
-for event in matched:
-    print(event)
-
-counts = {}
-
-for event in matched:
-    user = event["user"]
-    counts[user] = counts.get(user, 0) + 1
-
-print("Count by user:", counts)
+if "fake email" in description or "phishing" in description:
+    print("Threat: Phishing")
+elif "flood" in description or "denial of service" in description:
+    print("Threat: DoS/DDoS")
+elif "ransomware" in description or "malware" in description:
+    print("Threat: Malware")
+elif "intercept" in description or "man-in-the-middle" in description:
+    print("Threat: Man-in-the-Middle")
+else:
+    print("Threat category unclear")
