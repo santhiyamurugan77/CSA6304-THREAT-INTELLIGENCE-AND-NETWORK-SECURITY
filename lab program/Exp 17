@@ -1,0 +1,13 @@
+
+control = input("Describe security control: ").lower()
+
+if "training" in control or "awareness" in control:
+    print("Domain: People")
+elif "door" in control or "server room" in control:
+    print("Domain: Physical")
+elif "firewall" in control or "encryption" in control:
+    print("Domain: Technological")
+elif "policy" in control or "governance" in control:
+    print("Domain: Organizational")
+else:
+    print("Domain not identified")
