@@ -1,0 +1,15 @@
+
+story = input("Enter incident description: ").lower()
+
+if "phishing" in story or "fake email" in story:
+    print("Root Cause: Phishing")
+elif "unpatched" in story or "missing patch" in story:
+    print("Root Cause: Unpatched Vulnerability")
+elif "misconfigured" in story or "default password" in story:
+    print("Root Cause: Misconfiguration")
+elif "employee stole" in story or "insider" in story:
+    print("Root Cause: Insider Threat")
+elif "vendor" in story or "supply chain" in story:
+    print("Root Cause: Supply-Chain Compromise")
+else:
+    print("Root cause unclear")
