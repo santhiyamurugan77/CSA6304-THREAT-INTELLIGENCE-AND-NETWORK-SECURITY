@@ -1,0 +1,16 @@
+
+policy = input("Enter policy text: ").lower()
+
+elements = {
+    "Scope": "scope",
+    "Roles and Responsibilities": "responsibilities",
+    "Enforcement": "enforcement",
+    "Review Cycle": "review",
+    "Approval Authority": "approved by"
+}
+
+for name, keyword in elements.items():
+    if keyword in policy:
+        print(name, ": Present")
+    else:
+        print(name, ": Missing")
