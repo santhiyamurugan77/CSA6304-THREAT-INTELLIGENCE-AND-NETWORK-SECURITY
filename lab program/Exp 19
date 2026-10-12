@@ -1,25 +1,25 @@
 
-import hashlib
+events = [
+    {"user": "Anu", "action": "login_failed"},
+    {"user": "Raj", "action": "login_success"},
+    {"user": "Anu", "action": "login_failed"}
+]
 
-filename = input("Enter file name: ")
+search = input("Enter action to search: ").lower()
 
-known_hashes = {
-    # Example hash for an empty file only.
-    # Replace with verified malicious hashes from a trusted feed.
-    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-}
+matched = [
+    event for event in events
+    if search in event["action"].lower()
+]
 
-try:
-    with open(filename, "rb") as file:
-        data = file.read()
+print("Search results:")
+for event in matched:
+    print(event)
 
-    file_hash = hashlib.sha256(data).hexdigest()
-    print("SHA-256:", file_hash)
+counts = {}
 
-    if file_hash in known_hashes:
-        print("Known hash match")
-    else:
-        print("No known hash match")
+for event in matched:
+    user = event["user"]
+    counts[user] = counts.get(user, 0) + 1
 
-except FileNotFoundError:
-    print("File not found")
+print("Count by user:", counts)
