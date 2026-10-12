@@ -1,0 +1,25 @@
+
+import hashlib
+
+filename = input("Enter file name: ")
+
+known_hashes = {
+    # Example hash for an empty file only.
+    # Replace with verified malicious hashes from a trusted feed.
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
+
+try:
+    with open(filename, "rb") as file:
+        data = file.read()
+
+    file_hash = hashlib.sha256(data).hexdigest()
+    print("SHA-256:", file_hash)
+
+    if file_hash in known_hashes:
+        print("Known hash match")
+    else:
+        print("No known hash match")
+
+except FileNotFoundError:
+    print("File not found")
