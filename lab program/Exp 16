@@ -1,0 +1,15 @@
+
+layers = ["Email Filter", "Antivirus", "Firewall", "MFA"]
+
+blocked = False
+
+for layer in layers:
+    answer = input(layer + " blocks attack? (yes/no): ").lower()
+
+    if answer == "yes":
+        print("Attack blocked by", layer)
+        blocked = True
+        break
+
+if not blocked:
+    print("Attack reached target")
