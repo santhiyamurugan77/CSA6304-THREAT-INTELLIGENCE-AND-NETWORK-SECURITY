@@ -1,0 +1,11 @@
+
+text = input("Enter report description: ").lower()
+
+if any(w in text for w in ["executive", "business risk", "long-term"]):
+    print("Strategic Intelligence")
+elif any(w in text for w in ["tactics", "techniques", "campaign"]):
+    print("Tactical Intelligence")
+elif any(w in text for w in ["ip address", "hash", "malicious domain"]):
+    print("Operational Intelligence")
+else:
+    print("Classification unclear")
