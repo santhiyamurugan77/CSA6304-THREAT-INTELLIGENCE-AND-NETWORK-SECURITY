@@ -1,0 +1,17 @@
+
+import socket
+
+host = input("Enter target host: ")
+ports = [22, 80, 443]
+
+for port in ports:
+    s = socket.socket()
+    s.settimeout(1)
+    result = s.connect_ex((host, port))
+
+    if result == 0:
+        print(port, "is OPEN")
+    else:
+        print(port, "is CLOSED or FILTERED")
+
+    s.close()
