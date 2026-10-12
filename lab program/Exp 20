@@ -1,0 +1,25 @@
+
+events = [
+    {"user": "Anu", "action": "login_failed"},
+    {"user": "Raj", "action": "login_success"},
+    {"user": "Anu", "action": "login_failed"}
+]
+
+search = input("Enter action to search: ").lower()
+
+matched = [
+    event for event in events
+    if search in event["action"].lower()
+]
+
+print("Search results:")
+for event in matched:
+    print(event)
+
+counts = {}
+
+for event in matched:
+    user = event["user"]
+    counts[user] = counts.get(user, 0) + 1
+
+print("Count by user:", counts)
