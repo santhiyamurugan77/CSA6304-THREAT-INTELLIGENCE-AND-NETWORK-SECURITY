@@ -1,0 +1,29 @@
+
+logs = [
+    "INFO login",
+    "WARN login_failed",
+    "WARN login_failed"
+]
+
+events = []
+
+# Logstash-style parsing
+for line in logs:
+    parts = line.split()
+    events.append({
+        "level": parts[0],
+        "event": parts[1]
+    })
+
+# Elasticsearch-style indexing
+print("Indexed events:")
+for event in events:
+    print(event)
+
+# Kibana-style aggregation
+counts = {}
+for event in events:
+    name = event["event"]
+    counts[name] = counts.get(name, 0) + 1
+
+print("Event counts:", counts)
